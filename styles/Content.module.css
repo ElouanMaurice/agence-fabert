@@ -1,0 +1,159 @@
+
+ /* Conteneur principal */
+ .Content {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+
+.titreh1 {
+    display: flex;
+    justify-content: center;
+}
+
+.h1 {
+    color: #2c6e49;
+}
+
+.h2 {
+color: #8EA88C;
+
+}
+
+.explication {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 40px; /* Espacement entre les blocs */
+    max-width: 1200px;
+    margin: auto; /* Centre le tout */
+    padding: 40px 20px;
+}
+
+.explication > div {
+    width: 45%; /* Chaque élément prend environ la moitié de la largeur */
+    background: #f9f9f9; /* Fond léger */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Léger effet d’ombre */
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* .explication > div:hover {
+    transform: scale(1.05); /* Effet zoom au survol */
+ 
+
+
+
+.boutonbien {
+    border: 1.5px solid #8EA88C; /* Bordure de 2px avec couleur */
+    background-color: #8EA88C;
+    color: white;
+    border-radius: 8px; /* Coins arrondis */
+    margin-left: 30%;
+    margin-right: 30%;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.boutonbien:hover {
+    transform: scale(1.05); /* Effet zoom au survol*/
+}
+
+
+
+.carousel {
+  width: 90%;
+margin:auto;
+
+}
+
+.carouselimage {
+  
+  background-color: #005bb5;
+  width: 40%;
+  margin-left: 30%;
+}
+
+
+
+  
+
+  
+  
+  /* Image de présentation */
+  .photofb {
+    width: 50%;
+    height: auto;
+  }
+  
+ 
+  
+  /* Conteneur de la présentation avec texte et image */
+  .presentation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .texte {
+    flex: 1;
+    font-size: 1.1rem;
+    color: #333;
+    margin-right: 20px;
+    text-align: justify;
+  }
+  
+  .photofb {
+    flex-shrink: 0;
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* Texte centré */
+  .textCenter {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Liens stylisés */
+  .linkStyle {
+    text-decoration: none;
+    color: #0073e6;
+    font-weight: bold;
+  }
+  
+  .linkStyle:hover {
+    text-decoration: underline;
+    color: #005bb5;
+  }
+  
+  /* Responsive pour petits écrans */
+  @media (max-width: 768px) {
+    .presentation {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .texte {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .photofb {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+ 
