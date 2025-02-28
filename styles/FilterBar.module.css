@@ -1,0 +1,97 @@
+.filterBar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+
+  }
+  
+  .filterBar select,
+  .filterBar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Prend toute la largeur */
+  }
+  
+  .filterBar button {
+    padding: 10px;
+    background-color: #8EA88C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Prend toute la largeur */
+  }
+  
+  .filterBar button:hover {
+    background-color: #8EA88C;
+  }
+
+  .checkbox{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-between;
+    align-items: center;
+    border: solid 1.5px #8EA88C;
+    border-radius: 3%;
+    padding: 3%;
+    
+  }
+  
+  /* FilterBar.module.css */
+.filterBar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+ 
+  
+  .typeButton {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    background-color: transparent;
+    color: #333;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .typeButton:hover {
+    background-color: #f0f0f0;
+    border-color: #aaa;
+  }
+  
+  .selected {
+    background-color: #8EA88C;
+    color: white;
+    border-color: #8EA88C;
+  }
+  
+  /* Ajout de styles pour l'effet de survol */
+  .typeButton:hover {
+    background-color: #8EA88C;
+    color: white;
+    border-color: #8EA88C;
+  }
+  
+  .typeButton:active {
+    transform: scale(0.8);
+  }
+  
+  /* Pour le responsive design, ajuster la taille des boutons */
+  @media (max-width: 768px) {
+    .typeButton {
+      font-size: 12px;
+      padding: 10px 15px;
+    }
+  }
+  

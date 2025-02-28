@@ -54,12 +54,37 @@ color: #8EA88C;
     margin-left: 30%;
     margin-right: 30%;
     transition: transform 0.3s ease-in-out;
+    text-decoration: none;  /* Annule le soulignement du lien */
+    cursor: pointer;
 
 }
+
+
+
 
 .boutonbien:hover {
     transform: scale(1.05); /* Effet zoom au survol*/
+    text-decoration: none;  /* Annule le soulignement du lien */
+
 }
+
+.boutonbien1 {
+  border: 1.5px solid #8EA88C; /* Bordure de 2px avec couleur */
+    background-color: #8EA88C;
+    color: white;
+    border-radius: 8px; /* Coins arrondis */
+    margin-left: 30%;
+    margin-right: 30%;
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none;  /* Annule le soulignement du lien */
+}
+
+.boutonbien1:hover {
+  transform: scale(1.05); /* Effet zoom au survol*/
+    text-decoration: none;  /* Annule le soulignement du lien */
+}
+
+
 
 
 

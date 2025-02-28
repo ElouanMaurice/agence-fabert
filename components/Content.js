@@ -36,7 +36,7 @@ const Content = () => {
         <div className={styles.achat}>
           <h2 className={styles.h2}>Achat d'un bien</h2>
           <p>Vous cherchez à investir sur l’Île de Ré ? Nous vous accompagnons à chaque étape, de la sélection du bien jusqu’à la signature de l’acte de vente.</p>
-          <div className={styles.boutonbien}>Voir nos biens</div>
+          <p onClick={() => window.location.href = '/acheter'} className={styles.boutonbien}>Voir nos biens</p> {/* Utilisation du <p> pour la navigation */}
         </div>
       </div>
       
