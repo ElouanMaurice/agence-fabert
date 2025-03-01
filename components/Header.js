@@ -10,12 +10,12 @@ const Header = () => {
     </Link >
     <div className={styles.menu}>
         <div className={styles.dropdown}>
-            <Link className={styles.titlemenu} href="#">LOUER</Link>
-          <div className={styles.dropdownContent}>
-            <Link href="/louerannee">À L'ANNEE</Link>
-             <Link href="/louersaison">À LA SAISON</Link>
+            <Link className={styles.titlemenu} href="louer">LOUER</Link>
+            <div className={styles.dropdownContent}>
+              <Link href="locative">LOCATION ANNUELLE</Link>
+              <Link href="saisonniere">LOCATION SAISONNIERE</Link>
+            </div>
           </div>
-        </div>
             <Link className={styles.titlemenu} href='acheter'>ACHETER</Link>
             <Link className={styles.titlemenu} href='estimer'>ESTIMER</Link>
             <Link className={styles.titlemenu} href='agence'>NOTRE AGENCE</Link>
