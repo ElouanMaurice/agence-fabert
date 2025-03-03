@@ -1,8 +1,8 @@
-import styles from '../styles/PropertyCard.module.css';
+import styles from '../styles/AchatBien.module.css';
 import React from "react";
 
 
-const PropertyCard = ({ property }) => {
+const AchatBien = ({ property }) => {
   return (
     <div className={styles.propertyCard}> {/* Utilise le module CSS ici */}
       <img className={styles.image} src={property.image} alt={property.title} />
@@ -16,4 +16,4 @@ const PropertyCard = ({ property }) => {
   );
 };
 
-export default PropertyCard;
+export default AchatBien;

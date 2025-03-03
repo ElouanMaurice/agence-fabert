@@ -48,33 +48,6 @@
     justify-content: center;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
 
-.dropdownContent {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-}
 
-.dropdownContent a {
-    color: #8EA88C;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdownContent a:hover {
-    background-color: #f1f1f1;
-}
-
-/* Afficher le menu déroulant au survol */
-.dropdown:hover .dropdownContent {
-    display: block;
-}
 

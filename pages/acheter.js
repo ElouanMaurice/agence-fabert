@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from '../components/Header';
-import PropertyList from "../components/PropertyList";
+import AchatBienList from "../components/AchatBienList";
 import FilterBar from "../components/FilterBar";
 import styles from "../styles/acheter.module.css"; // Import du CSS
 
@@ -71,7 +71,7 @@ const Acheter = () => {
     <Header />
     <div className={styles.firstcontainer}>
       
-      <h1 className={styles.title}>Liste des Biens Immobiliers Kti Immo </h1>
+      <h1 className={styles.title}>Biens Immobiliers Kti Immo </h1>
 
       {/* Conteneur principal avec Flexbox */}
       <div className={styles.container}>
@@ -82,7 +82,7 @@ const Acheter = () => {
 
         {/* Liste des propriétés à droite */}
         <div className={styles.content}>
-          <PropertyList properties={filteredProperties} />
+          <AchatBienList properties={filteredProperties} />
         </div>
       </div>
     </div>

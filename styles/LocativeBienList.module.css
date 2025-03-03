@@ -1,4 +1,4 @@
-.propertygrid {
+.propertyGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);  /* Afficher 3 colonnes */
     gap: 30px;  /* Espacement entre les cartes */
