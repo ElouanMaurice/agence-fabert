@@ -3,6 +3,8 @@ import styles from '../styles/louer.module.css';
 import Header from '../components/Header';
 import LocativeBienList from "../components/LocativeBienList";
 import FilterBarLocative from '../components/FilterBarLocative';
+import Footer from '../components/Footer';
+
 
 const Louer = () => {
   const [typeLocation, setTypeLocation] = useState(null); // null au départ pour afficher l'accueil
@@ -127,6 +129,7 @@ const Louer = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

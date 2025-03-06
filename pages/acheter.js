@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import AchatBienList from "../components/AchatBienList";
 import FilterBar from "../components/FilterBar";
 import styles from "../styles/acheter.module.css"; // Import du CSS
+import Footer from '../components/Footer';
+
 
 const Acheter = () => {
   const [properties, setProperties] = useState([]);
@@ -86,6 +88,7 @@ const Acheter = () => {
         </div>
       </div>
     </div>
+    <Footer />
     </div>
   );
 };

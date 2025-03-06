@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Content from '../components/Content';
-import Contact from '../components/ContactForm';
+import Footer from '../components/Footer';
 
 
 const estimer = () => {
@@ -11,6 +11,7 @@ const estimer = () => {
     <div>
       <Header />
       <p>estimer</p>
+      <Footer />
     </div>
   );
  
