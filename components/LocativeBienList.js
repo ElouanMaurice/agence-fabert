@@ -5,8 +5,8 @@ import styles from '../styles/LocativeBienList.module.css';
 const LocativeBienList = ({ locative }) => {
   return (
     <div className={styles.propertyGrid}>
-      {locative.map((bien) => (
-        <LocativeBien key={bien.id} bien={bien} />
+      {locative.map((location) => (
+        <LocativeBien key={location.id} location={location} />
       ))}
     </div>
   );

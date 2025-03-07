@@ -1,0 +1,126 @@
+/* .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .image {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .location {
+    font-size: 18px;
+    color: gray;
+  }
+  
+  .price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0070f3;
+  }
+  
+  .description {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .contactButton {
+    background-color: #0070f3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contactButton:hover {
+    background-color: #005bb5;
+  }
+  
+  .backButton {
+    background-color: transparent;
+    border: none;
+    color: #0070f3;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+   */
+
+   .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+  .publication {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .backButton {
+    padding: 10px;
+    background-color: #8EA88C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .backButton:hover {
+    background-color: #2c6e49;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #333;
+  }
+  
+  .location {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    color: #2c6e49;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    color: #777;
+    margin: 20px 0;
+  }
+  
+  .contactButton {
+    padding: 12px;
+    background-color: #8EA88C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contactButton:hover {
+    background-color: #2c6e49;
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
