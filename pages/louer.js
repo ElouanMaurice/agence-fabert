@@ -2,27 +2,19 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/louer.module.css';
 import Header from '../components/Header';
 import LocativeBienList from "../components/LocativeBienList";
+import SaisonniereBienList from "../components/SaisonniereBienList";
 import FilterBarLocative from '../components/FilterBarLocative';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 
 const Louer = () => {
-  const [typeLocation, setTypeLocation] = useState(null); // null au départ pour afficher l'accueil
-  const [filters, setFilters] = useState({
-    types: [],
-    location: "",
-    minPrice: null,
-    maxPrice: null,
-    sortOrder: ""
-  });
-
-  // Stocke les biens affichés après filtrage et tri
+  const [typeLocation, setTypeLocation] = useState(null);
+  const [locativeFilters, setLocativeFilters] = useState({ types: [], location: "", minPrice: null, maxPrice: null, sortOrder: "" });
+  const [saisonniereFilters, setSaisonniereFilters] = useState({ types: [], location: "", minPrice: null, maxPrice: null, sortOrder: "" });
   const [displayedLocatives, setDisplayedLocatives] = useState([]);
   const [displayedSaisonnieres, setDisplayedSaisonnieres] = useState([]);
+  const router = useRouter();
 
-  const router = useRouter(); // Utilisation du router
-
-  // Données des biens (remplaçables par une API plus tard)
   const locatives = [
     { id: 1, titre: "Appartement T2", prix: 600, image: "/images1.jpg", description: "Appartement lumineux avec balcon.", location: "Saint Martin de Ré", type: "Appartement" },
     { id: 2, titre: "Appartement T3", prix: 680, image: "/images1.jpg", description: "Grand salon et terrasse.", location: "La Flotte", type: "Appartement" },
@@ -32,6 +24,7 @@ const Louer = () => {
     { id: 6, titre: "Maison avec piscine", prix: 1000, image: "/images1.jpg", description: "Maison familiale proche des écoles.", location: "Saint Martin de Ré", type: "Maison" },
     { id: 7, titre: "Appartement T2", prix: 650, image: "/images1.jpg", description: "Appartement lumineux avec balcon.", location: "La Flotte", type: "Appartement" },
     { id: 8, titre: "Maison avec jardin", prix: 1200, image: "/images1.jpg", description: "Maison avec jardin clos.", location: "La Couarde", type: "Maison" }
+    
   ];
 
   const saisonnieres = [
@@ -49,112 +42,104 @@ const Louer = () => {
     { id: 12, titre: "Grand gîte avec spa", prix: 250, image: "/images1.jpg", description: "Gîte de luxe avec spa et cheminée, idéal en hiver.", location: "Loix", type: "Gîte" }
   ];
 
-  // Applique les filtres et le tri pour les locations annuelles
   useEffect(() => {
-    let filteredLocatives = locatives.filter((location) => {
-      return (
-        (filters.location === "" || location.location === filters.location) &&
-        (filters.minPrice === null || location.prix >= filters.minPrice) &&
-        (filters.maxPrice === null || location.prix <= filters.maxPrice) &&
-        (filters.types.length === 0 || filters.types.includes(location.type))
-      );
-    });
+    let filteredLocatives = locatives.filter(location =>
+      (!locativeFilters.location || location.location === locativeFilters.location) &&
+      (!locativeFilters.minPrice || location.prix >= locativeFilters.minPrice) &&
+      (!locativeFilters.maxPrice || location.prix <= locativeFilters.maxPrice) &&
+      (locativeFilters.types.length === 0 || locativeFilters.types.includes(location.type))
+    );
 
-    // Appliquer le tri
-    if (filters.sortOrder === "croissant") {
+    if (locativeFilters.sortOrder === "croissant") {
       filteredLocatives.sort((a, b) => a.prix - b.prix);
-    } else if (filters.sortOrder === "décroissant") {
+    } else if (locativeFilters.sortOrder === "décroissant") {
       filteredLocatives.sort((a, b) => b.prix - a.prix);
     }
 
-    // Mettre à jour l'état des biens affichés
     setDisplayedLocatives(filteredLocatives);
-  }, [filters]); // Se met à jour quand les filtres changent
+  }, [locativeFilters]);
 
-  // Applique les filtres et le tri pour les locations saisonnières
   useEffect(() => {
-    let filteredSaisonnieres = saisonnieres.filter((saison) => {
-      return (
-        (filters.location === "" || saison.location === filters.location) &&
-        (filters.minPrice === null || saison.prix >= filters.minPrice) &&
-        (filters.maxPrice === null || saison.prix <= filters.maxPrice) &&
-        (filters.types.length === 0 || filters.types.includes(saison.type))
-      );
-    });
+    let filteredSaisonnieres = saisonnieres.filter(saison =>
+      (!saisonniereFilters.location || saison.location === saisonniereFilters.location) &&
+      (!saisonniereFilters.minPrice || saison.prix >= saisonniereFilters.minPrice) &&
+      (!saisonniereFilters.maxPrice || saison.prix <= saisonniereFilters.maxPrice) &&
+      (saisonniereFilters.types.length === 0 || saisonniereFilters.types.includes(saison.type))
+    );
 
-    // Appliquer le tri
-    if (filters.sortOrder === "croissant") {
+    if (saisonniereFilters.sortOrder === "croissant") {
       filteredSaisonnieres.sort((a, b) => a.prix - b.prix);
-    } else if (filters.sortOrder === "décroissant") {
+    } else if (saisonniereFilters.sortOrder === "décroissant") {
       filteredSaisonnieres.sort((a, b) => b.prix - a.prix);
     }
 
-    // Mettre à jour l'état des biens affichés
     setDisplayedSaisonnieres(filteredSaisonnieres);
-  }, [filters]);
+  }, [saisonniereFilters]);
 
-  // Effect pour gérer l'état du type de location via l'URL
   useEffect(() => {
     if (router.query.typeLocation) {
-      setTypeLocation(router.query.typeLocation); // Met à jour le type de location à partir de l'URL
+      setTypeLocation(router.query.typeLocation);
     }
   }, [router.query.typeLocation]);
 
-  // Fonction pour gérer la navigation vers la page de détail de la location
   const handleDetailClick = (id) => {
-    router.push(`/louer/${typeLocation}/${id}?typeLocation=${typeLocation}`);
+    router.push(`/louer/${id}?typeLocation=${typeLocation}`);
   };
 
-  return (
-    <div>
-      <Header />
-      <div className={styles.firstcontainer}>
-        <h1 className={styles.h1}>Bienvenue sur la page des locations Kti Immo</h1>
-
-        {/* Boutons pour sélectionner le type de location */}
-        <div className={styles.buttonContainer}>
-          <button
-            className={`${styles.button} ${typeLocation === 'locative' ? styles.active : ''}`}
-            onClick={() => {
-              setTypeLocation('locative');
-              router.push('/louer?typeLocation=locative'); // Mise à jour de l'URL
-            }}
-          >
-            Location Annuelle
-          </button>
-          <button
-            className={`${styles.button} ${typeLocation === 'saisonniere' ? styles.active : ''}`}
-            onClick={() => {
-              setTypeLocation('saisonniere');
-              router.push('/louer?typeLocation=saisonniere'); // Mise à jour de l'URL
-            }}
-          >
-            Location Saisonnière
-          </button>
+  
+    return (
+      <div>
+        <Header />
+        <div className={styles.firstcontainer}>
+          <h1 className={styles.h1}>Bienvenue sur la page des locations Kti Immo</h1>
+  
+          <div className={styles.buttonContainer}>
+            <button
+              className={`${styles.button} ${typeLocation === 'locative' ? styles.active : ''}`}
+              onClick={() => {
+                setTypeLocation('locative');
+                router.push('/louer?typeLocation=locative');
+              }}
+            >
+              Location Annuelle
+            </button>
+            <button
+              className={`${styles.button} ${typeLocation === 'saisonniere' ? styles.active : ''}`}
+              onClick={() => {
+                setTypeLocation('saisonniere');
+                router.push('/louer?typeLocation=saisonniere');
+              }}
+            >
+              Location Saisonnière
+            </button>
+          </div>
+  
+          {(typeLocation === null || typeLocation === '') && <h4 className={styles.h4}>Sélectionnez un type de location pour commencer.</h4>}
+  
+          {typeLocation && (
+            <div className={styles.container}>
+              {/* Sidebar filtre */}
+              <div className={styles.sidebar}>
+                <FilterBarLocative
+                  filters={typeLocation === 'locative' ? locativeFilters : saisonniereFilters}
+                  setFilters={typeLocation === 'locative' ? setLocativeFilters : setSaisonniereFilters}
+                />
+              </div>
+  
+              {/* Liste des biens */}
+              <div className={styles.content}>
+                {typeLocation === 'locative' ? (
+                  <LocativeBienList locative={displayedLocatives} handleDetailClick={handleDetailClick} />
+                ) : (
+                  <SaisonniereBienList saisonniere={displayedSaisonnieres} handleDetailClick={handleDetailClick} />
+                )}
+              </div>
+            </div>
+          )}
         </div>
-
-        {/* Affichage du contenu en fonction du type de location sélectionné */}
-        {typeLocation === null && (
-          <p>Sélectionnez un type de location pour commencer.</p>
-        )}
-
-        {typeLocation === 'locative' && (
-          <div>
-            <FilterBarLocative filters={filters} setFilters={setFilters} />
-            <LocativeBienList displayedLocatives={displayedLocatives} handleDetailClick={handleDetailClick} />
-          </div>
-        )}
-
-        {typeLocation === 'saisonniere' && (
-          <div>
-            <FilterBarLocative filters={filters} setFilters={setFilters} />
-            <LocativeBienList displayedLocatives={displayedSaisonnieres} handleDetailClick={handleDetailClick} />
-          </div>
-        )}
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
-};
-
-export default Louer;
+    );
+  };
+  
+  export default Louer;
