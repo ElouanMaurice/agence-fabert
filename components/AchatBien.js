@@ -12,7 +12,7 @@ const AchatBien = ({ property }) => {
       <h3>{property.title}</h3>
       <p>{property.location}</p>
       <p>{property.price}€</p>
-      <Link href={`/achatdetail/${property.id}`}>
+      <Link href={`/achatdetail/${property._id}`}>
         <button className={styles.button}>Voir Détails</button>
       </Link>
     </div>

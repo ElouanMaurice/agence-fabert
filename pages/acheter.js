@@ -35,38 +35,26 @@ const Acheter = () => {
     setFilteredProperties(fetchProperties);
   }, []);
 
-   // Appliquer les filtres
-   useEffect(() => {
-    let filtered = properties;
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/properties");
+        if (!response.ok) {
+          throw new Error("Erreur lors du chargement des biens");
+        }
+        const data = await response.json();
+        setProperties(data);
+        setFilteredProperties(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchProperties();
+  }, []);
+  
 
-    // Filtrer par type
-    if (filters.types.length > 0) {
-        filtered = filtered.filter(p => filters.types.includes(p.type));
-    }
-
-    // Filtrer par localisation
-    if (filters.location) {
-        filtered = filtered.filter(p => p.location === filters.location);
-    }
-
-    // Filtrer par prix
-    if (filters.minPrice !== null) {
-        filtered = filtered.filter(p => p.price >= filters.minPrice);
-    }
-
-    if (filters.maxPrice !== null) {
-        filtered = filtered.filter(p => p.price <= filters.maxPrice);
-    }
-
-    // Trier par prix
-    if (filters.sortOrder === "croissant") {
-        filtered = [...filtered].sort((a, b) => a.price - b.price);
-    } else if (filters.sortOrder === "décroissant") {
-        filtered = [...filtered].sort((a, b) => b.price - a.price);
-    }
-
-    setFilteredProperties(filtered);
-}, [filters, properties]);
+   
 
   return (
     <div>
